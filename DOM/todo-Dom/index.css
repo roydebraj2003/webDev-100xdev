@@ -10,19 +10,22 @@
 .btn-submit {
     height: 20px;
     width: 100px;
-    border-radius: 15px;
+    
 }
 input {
     height: 30px;
     width: 500px;
-    border-radius: 15px;
 }
-.todo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .btn-delete {
     margin-bottom: 4px;
     margin-inline: 30px;
+}
+button, input {
+    border-width: 1px;
+    border-radius: 15px;
+
+}
+button:focus, input:focus {
+    outline: none
 }
