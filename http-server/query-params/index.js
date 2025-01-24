@@ -2,9 +2,19 @@ const express = require("express");
 
 const app = express();
 
-//dynamic end points withing the colon
+let count = 0;
 
-app.get("/multiply/:a/:b", (req, res) => {
+function counter(req, res, next) {
+
+  count = count + 1;
+  console.log(count)
+  next()
+
+}
+
+//dynamic end points withing the colon, and we use req.params
+
+app.get("/multiply/:a/:b",counter, (req, res) => {
   const input = req.params;
   console.log(input)
   res.status(200).json({
@@ -12,22 +22,22 @@ app.get("/multiply/:a/:b", (req, res) => {
     data: parseInt(input.a) * parseInt(input.b),
   });
 });
-app.get("/add", (req, res) => {
-    const input = req.query;
+app.get("/add/:a/:b",counter, (req, res) => {
+    const input = req.params;
     res.status(200).json({
       success: true,
       data: parseInt(input.a) + parseInt(input.b),
     });
   });
-  app.get("/subtract", (req, res) => {
-    const input = req.query;
+  app.get("/subtract/:a/:b", (req, res) => {
+    const input = req.params;
     res.status(200).json({
       success: true,
       data: parseInt(input.a) - parseInt(input.b),
     });
   });
-  app.get("/divide", (req, res) => {
-    const input = req.query;
+  app.get("/divid/:a/:b", (req, res) => {
+    const input = req.params;
     res.status(200).json({
       success: true,
       data: parseInt(input.a) + parseInt(input.b),
